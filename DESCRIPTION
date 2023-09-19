@@ -1,0 +1,14 @@
+Package: facetwarp
+Title: Arrange Facets Using Other Numerical Columns
+Version: 0.0.1
+Authors@R: 
+    person(given="Matthew", family="Dzugan", role=c("aut", "cre"), email="hello@mattdzugan.com")
+Description: Layout your facet_wrap Facets using other columns, using the Jonker & Volgenant algorithm to solve for the positions of your facets.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

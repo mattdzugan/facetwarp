@@ -1,0 +1,92 @@
+---
+title: "facetwarp"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{facetwarp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+*facetwarp* is an extension of the [*ggplot2*](https://ggplot2.tidyverse.org) specifically aimed at arranging faceted plots.
+
+The main function within the `facetwarp` package is `facet_warp`, which is a close sibling of [ggplot2::facet_wrap](https://ggplot2.tidyverse.org/reference/facet_wrap.html), hence the similar name. 
+If you're not already familiar with how to use [ggplot2::facet_wrap](https://ggplot2.tidyverse.org/reference/facet_wrap.html), please start there.
+
+Before you go any further, you should already be familiar with This allows you to 'speak' a graph from composable elements, instead of being limited to a predefined set of charts.
+
+
+## Part 1: wrap vs warp 🪄
+
+### wrap
+
+First let's recall what `facet_wrap` gives us using the `iris` dataset. 👇
+```{r setup}
+library(ggplot2)
+
+ggplot(iris) +
+  geom_point(aes(x=Petal.Width, y=Petal.Length))+
+  facet_wrap(vars(Species),nrow = 2)
+```
+
+Note that there are 3 facets, one for each species, and they are arranged in alphabetical order.
+Because we've arranged them into 2 rows, and there are only 3 facets, the 4th panel (lower, right) is not occupied.
+
+### warp
+Now, we know that we've got other columns in this dataset, specifically `Sepal.Width` and `Sepal.Length`.
+Let's explore those axis quickly by summarizing their values by `Species`
+
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+
+ggplot(iris %>% 
+            group_by(Species) %>% 
+            summarize(median_Sepal.Width  = median(Sepal.Width),
+                      median_Sepal.Length = median(Sepal.Length)))+
+    geom_text(aes(x=median_Sepal.Width, y=median_Sepal.Length, label=Species))
+```
+
+In our facetted scatter plot above, instead of arranging the facets alphabetically, 
+maybe we want the layout to mimic this `Sepal.Length` and `Sepal.Width` arrangement we see above.
+
+**IT IS TIME TO ✨ WARP THE FACETS  🪄 **
+
+
+```{r}
+library(facetwarp)
+ggplot(iris)+
+    geom_point(aes(x=Petal.Width, y=Petal.Length))+
+    facet_warp(vars(Species), macro_x='Sepal.Width', macro_y='Sepal.Length', nrow = 3, ncol = 3)
+```
+
+👆 Notice the layout has changed. `facet_warp` has repositioned the facets!
+In fact, they are mimicing the arrangement we saw above:
+* `virginica` at the top due to its high `median_Sepal.Length`
+* `versicolor` at the left due to its low `median_Sepal.Width`
+* `setosa` at the lower-right due to its low `median_Sepal.Length` and high `median_Sepal.Width`
+
+This was accomplished using our **macro** axes.
+When we say `macro_x='Sepal.Width'`, we're saying, make no change to the "x axis" of the individual facets, but in order to arrange the facets themselves, treat `Sepal.Width` as the x-dimension.
+
+Since we only need 4 panels total, we can try dropping `nrow` and `ncol` to `2` to condense the arrangement:
+```{r}
+ggplot(iris)+
+    geom_point(aes(x=Petal.Width, y=Petal.Length))+
+    facet_warp(vars(Species), macro_x='Sepal.Width', macro_y='Sepal.Length', nrow = 2, ncol = 2)
+```
+
+
+## Part 2: Building on the Warp Idea with Election Data
+
+### The More Facets, The Bigger the Insights
+
+### Leaving Empty Space
+
+
+## Part 3: Chicago Transity Authority Data
