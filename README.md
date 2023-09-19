@@ -4,9 +4,12 @@
 
 *facetwarp* is an extension of [*ggplot2*](https://ggplot2.tidyverse.org), specifically aimed at assisting in arranging faceted plots.
 
-Typically `facet_wrap` positions your facets alphabetically, but with `facet_warp` you might: - prioritizing functions to unit test based on their centrality - examining the recursive dependencies you are taking on by using a given package - exploring the structure of a new package provided by a coworker or downloaded from the internet
+Typically `facet_wrap` positions your facets alphabetically, but with `facet_warp` you might: 
+- layout facets as their categories appear on a map 🗺
+- arrange facets as if they themselves are points in a 2D scatter plot ⠞
 
-![](https://raw.githubusercontent.com/uptake/pkgnet/main/readme_figures/demo.gif)
+
+![](https://raw.githubusercontent.com/mattdzugan/facetwarp/main/man/figures/demo.gif)
 
 # Table of contents
 
