@@ -20,9 +20,9 @@ Typically `facet_wrap` positions your facets alphabetically, but with `facet_war
 
 ## How it Works <a name="howitworks"></a>
 
-The core functionality of this package is the `facet_warp` function.
+`facetwarp` uses a solution to the [Linear Assignment Problem](https://en.wikipedia.org/wiki/Assignment_problem) developed by [Jonker & Volgenant](https://link.springer.com/article/10.1007/BF02278710) to take facets which can be expressed some 2D space, and snap them to a regular grid.
 
-## Installation <a name="installation"></a> {#installation}
+## Installation <a name="installation"></a>
 
 ```         
 devtools::install_github("mattdzugan/facetwarp")
@@ -30,7 +30,7 @@ devtools::install_github("mattdzugan/facetwarp")
 
 ## Usage Examples <a name="examples"></a>
 
-Try it out!
+Try it out! (note the **warp** not **wrap** after the `facet`) ✨
 
 ```         
 library(ggplot2)
