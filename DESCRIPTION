@@ -1,5 +1,5 @@
 Package: facetwarp
-Title: Arrange Facets Using Other Numerical Columns
+Title: Arrange ggplot2 Facets Using Other Numerical Columns
 Version: 0.0.1
 Authors@R: 
     person(given="Matthew", family="Dzugan", role=c("aut", "cre"), email="hello@mattdzugan.com")
