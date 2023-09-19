@@ -1,4 +1,4 @@
-# facetwarp <img src="man/figures/logo.png" align="right" width="120"/>
+# Warp your Facets with facetwarp <img src="man/figures/logo.png" align="right" width="120"/>
 
 ## Introduction
 
