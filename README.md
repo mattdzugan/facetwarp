@@ -45,6 +45,14 @@ ggplot(iris)+
 ```
 <img src="man/figures/iris_warp.png" align="left" width="100%"/>
 
+`facet_warp` has re-positioned the facets!
+In fact, they are arranged to mimic the arrangement we saw above:
+
+* `virginica` at the top due to its high `median_Sepal.Length`
+* `versicolor` at the left due to its low `median_Sepal.Width`
+* `setosa` at the lower-right due to its low `median_Sepal.Length` and high `median_Sepal.Width`
+
+
 ### A more interesting example:
 
 ```r
