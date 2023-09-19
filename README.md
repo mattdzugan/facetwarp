@@ -9,7 +9,7 @@ Typically `facet_wrap` positions your facets alphabetically, but with `facet_war
 - arrange facets as if they themselves are points in a 2D scatter plot ⠞
 
 
-![](https://raw.githubusercontent.com/mattdzugan/facetwarp/main/man/figures/demo.gif)
+![](https://github.com/mattdzugan/facetwarp/blob/main/man/figures/demo.gif?raw=true)
 
 # Table of contents
 
