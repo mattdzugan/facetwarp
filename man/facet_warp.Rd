@@ -43,6 +43,7 @@ check it for more details and pointers to other options.}
 Arrange Facets for your ggplot object
 }
 \examples{
+library(ggplot2)
 ggplot(iris)+
    geom_point(aes(x=Petal.Width, y=Petal.Length))+
    facet_warp(vars(Species), macro_x='Sepal.Width', macro_y='Sepal.Length', nrow = 2)
