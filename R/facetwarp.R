@@ -19,6 +19,7 @@
 #'   formatting facet labels. [label_value()] is used by default,
 #'   check it for more details and pointers to other options.
 #' @examples
+#' library(ggplot2)
 #' ggplot(iris)+
 #'    geom_point(aes(x=Petal.Width, y=Petal.Length))+
 #'    facet_warp(vars(Species), macro_x='Sepal.Width', macro_y='Sepal.Length', nrow = 2)
@@ -64,7 +65,7 @@ FacetWarp <- ggproto("FacetWarp", FacetWrap,
                          data = data,
                          env = params$plot_env,
                          vars = params$facets,
-                         drop = FALSE
+                         drop = TRUE
                        )
 
                        # autocompute n_rows and n_cols
