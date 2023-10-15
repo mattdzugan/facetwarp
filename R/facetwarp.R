@@ -8,16 +8,7 @@
 #'   the plot. Using `strip.position` it is possible to place the labels on
 #'   either of the four sides by setting \code{strip.position = c("top",
 #'   "bottom", "left", "right")}
-#' @param labeller A function that takes one data frame of labels and
-#'   returns a list or data frame of character vectors. Each input
-#'   column corresponds to one factor. Thus there will be more than
-#'   one with `vars(cyl, am)`. Each output
-#'   column gets displayed as one separate line in the strip
-#'   label. This function should inherit from the "labeller" S3 class
-#'   for compatibility with [labeller()]. You can use different labeling
-#'   functions for different kind of labels, for example use [label_parsed()] for
-#'   formatting facet labels. [label_value()] is used by default,
-#'   check it for more details and pointers to other options.
+#' @inheritParams ggplot2::facet_wrap
 #' @examples
 #' ggplot(iris)+
 #'    geom_point(aes(x=Petal.Width, y=Petal.Length))+
@@ -28,7 +19,8 @@ facet_warp <- function(facets,
                        macro_x, macro_y,
                        nrow = NULL, ncol = NULL,
                        strip.position = "top",
-                       labeller = "label_value") {
+                       labeller = "label_value",
+                       drop = TRUE) {
   ggproto(NULL, FacetWarp,
           params = list(
             facets = rlang::quos_auto_name(facets),
@@ -37,7 +29,8 @@ facet_warp <- function(facets,
             strip.position = strip.position,
             labeller = labeller,
             ncol = ncol,
-            nrow = nrow
+            nrow = nrow,
+            drop = drop
           )
   )
 }
@@ -64,7 +57,7 @@ FacetWarp <- ggproto("FacetWarp", FacetWrap,
                          data = data,
                          env = params$plot_env,
                          vars = params$facets,
-                         drop = FALSE
+                         drop = drop
                        )
 
                        # autocompute n_rows and n_cols
