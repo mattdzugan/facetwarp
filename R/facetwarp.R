@@ -70,14 +70,26 @@ FacetWarp <- ggproto("FacetWarp", FacetWrap,
                        # autocompute n_rows and n_cols
                        dims <- ggplot2::wrap_dims(nrow(panels), params$nrow, params$ncol)
 
-                       # core lap algorithm
-                       locations <- compute_arrangement(mydata = data,
-                                                        macro_x = params$macro_x,
-                                                        macro_y = params$macro_y,
-                                                        faceter = gsub('~','',as.character(params$facets)),
-                                                        n_row = dims[1],
-                                                        n_col = dims[2])
+                       # special case - only one factor level
+                       if (all(dims == 1L)) {
+                         locations <- data.frame(facet_id = 1,
+                                                 ROW = 1,
+                                                 COL = 1)
+                       } else {
+                         # ensure 2x2 grid minimum
+                         if (all(sort(dims) == c(1, 2) | all(sort(dims) == c(1, 3)))) {
+                           dims <- c(2, 2)
+                         }
 
+                         # core lap algorithm
+                         locations <- compute_arrangement(mydata = data,
+                                                          macro_x = params$macro_x,
+                                                          macro_y = params$macro_y,
+                                                          faceter = gsub('~','',as.character(params$facets)),
+                                                          n_row = dims[1],
+                                                          n_col = dims[2])
+                       }
+                       
                        # Assign each panel a location
                        layout <- data.frame(
                          PANEL = 1:nrow(panels), # panel identifier
