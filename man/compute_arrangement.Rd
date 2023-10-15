@@ -15,7 +15,7 @@ compute_arrangement(mydata, macro_x, macro_y, faceter, n_row, n_col)
 
 \item{faceter}{the column name defining faceting groups}
 
-\item{nrow, ncol}{Number of rows and columns.}
+\item{n_row, n_col}{Number of rows and columns.}
 }
 \description{
 Compute Arrangement Using Jonker & Volgenant algorithm
