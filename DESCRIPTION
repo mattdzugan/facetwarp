@@ -11,7 +11,8 @@ RoxygenNote: 7.2.3
 Imports:
     dplyr,
     ggplot2,
-    lpSolve
+    lpSolve,
+    rlang
 Suggests: 
     knitr,
     rmarkdown

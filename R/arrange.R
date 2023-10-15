@@ -4,12 +4,11 @@
 #' @param macro_x the name of a column which shall be used to arrange facets horizontally
 #' @param macro_y the name of a column which shall be used to arrange facets vertically
 #' @param faceter the column name defining faceting groups
-#' @param nrow,ncol Number of rows and columns.
+#' @param n_row,n_col Number of rows and columns.
 #' @import dplyr
 #' @import lpSolve
 compute_arrangement <- function(mydata, macro_x, macro_y, faceter, n_row, n_col){
 
-  library(lpSolve)
   dt <- as.data.frame(mydata)
 
   ##############################################################################
