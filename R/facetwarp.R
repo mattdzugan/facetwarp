@@ -51,7 +51,7 @@ FacetWarp <- ggproto("FacetWarp", FacetWrap,
                          data = data,
                          env = params$plot_env,
                          vars = params$facets,
-                         drop = drop
+                         drop = params$drop
                        )
 
                        # autocompute n_rows and n_cols
