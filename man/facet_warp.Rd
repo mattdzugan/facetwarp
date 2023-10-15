@@ -16,7 +16,13 @@ facet_warp(
 )
 }
 \arguments{
-\item{facets}{A variable, quoted by vars(), defining faceting groups}
+\item{facets}{A set of variables or expressions quoted by \code{\link[ggplot2:vars]{vars()}}
+and defining faceting groups on the rows or columns dimension.
+The variables can be named (the names are passed to \code{labeller}).
+
+For compatibility with the classic interface, can also be a
+formula or character vector. Use either a one sided formula, \code{~a + b},
+or a character vector, \code{c("a", "b")}.}
 
 \item{macro_x}{the name of a column which shall be used to arrange facets horizontally}
 

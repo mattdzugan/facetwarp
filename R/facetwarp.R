@@ -1,13 +1,7 @@
 #' Arrange Facets for your ggplot object
 #'
-#' @param facets A variable, quoted by vars(), defining faceting groups
 #' @param macro_x the name of a column which shall be used to arrange facets horizontally
 #' @param macro_y the name of a column which shall be used to arrange facets vertically
-#' @param nrow,ncol Number of rows and columns.
-#' @param strip.position By default, the labels are displayed on the top of
-#'   the plot. Using `strip.position` it is possible to place the labels on
-#'   either of the four sides by setting \code{strip.position = c("top",
-#'   "bottom", "left", "right")}
 #' @inheritParams ggplot2::facet_wrap
 #' @examples
 #' ggplot(iris)+
